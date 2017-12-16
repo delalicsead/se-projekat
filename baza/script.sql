@@ -28,9 +28,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Kurs` (
   `NazivKursa` VARCHAR(45) NOT NULL,
   `Odsjek` VARCHAR(45) NULL,
   `Semestar` VARCHAR(45) NULL,
-  `Smjer` VARCHAR(45) NULL,
-  `Ciklus` VARCHAR(45) NULL,
-  PRIMARY KEY (`KursId`))
+  `Smjer` VARCHAR(45) BINARY NULL,
+  `Ciklus` VARCHAR(45) BINARY NULL,
+  `SifraKursa` VARCHAR(45) NULL,
+  PRIMARY KEY (`KursId`),
+  UNIQUE INDEX `SifraKursa_UNIQUE` (`SifraKursa` ASC))
 ENGINE = InnoDB;
 
 
@@ -96,23 +98,28 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`KorisnickiDetalji` (
   `KorisnickiDetaljiId` INT NOT NULL AUTO_INCREMENT,
-  `Ime` VARCHAR(45) NULL,
-  `Prezime` VARCHAR(45) NULL,
-  `BrojIndexa` VARCHAR(45) NULL,
+  `Ime` VARCHAR(45) NOT NULL,
+  `Prezime` VARCHAR(45) NOT NULL,
+  `BrojIndexa` VARCHAR(45) NOT NULL,
   `DatumRodjenja` DATE NULL,
+  `Email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`KorisnickiDetaljiId`),
-  UNIQUE INDEX `StudentId_UNIQUE` (`KorisnickiDetaljiId` ASC))
+  UNIQUE INDEX `StudentId_UNIQUE` (`KorisnickiDetaljiId` ASC),
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),
+  UNIQUE INDEX `BrojIndexa_UNIQUE` (`BrojIndexa` ASC))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Smjer`
+-- Table `mydb`.`Odsjek`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Smjer` (
-  `SmjerId` INT NOT NULL AUTO_INCREMENT,
-  `Naziv` VARCHAR(45) NULL,
+CREATE TABLE IF NOT EXISTS `mydb`.`Odsjek` (
+  `OdsjekId` INT NOT NULL AUTO_INCREMENT,
   `KorisnickiDetalji_KorisnickiDetaljiId` INT NOT NULL,
-  PRIMARY KEY (`SmjerId`, `KorisnickiDetalji_KorisnickiDetaljiId`),
+  `Naziv` VARCHAR(45) NULL,
+  `Smjer` VARCHAR(45) NULL,
+  `Fakultet` VARCHAR(45) NULL,
+  PRIMARY KEY (`OdsjekId`, `KorisnickiDetalji_KorisnickiDetaljiId`),
   INDEX `fk_Smjer_KorisnickiDetalji1_idx` (`KorisnickiDetalji_KorisnickiDetaljiId` ASC),
   CONSTRAINT `fk_Smjer_KorisnickiDetalji1`
     FOREIGN KEY (`KorisnickiDetalji_KorisnickiDetaljiId`)
@@ -127,7 +134,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`TipKorisnika` (
   `TipKorisnikaId` INT NOT NULL AUTO_INCREMENT,
-  `Tip` VARCHAR(45) NULL,
+  `Tip` VARCHAR(45) NOT NULL,
   `KorisnickiDetalji_KorisnickiDetaljiId` INT NOT NULL,
   PRIMARY KEY (`TipKorisnikaId`, `KorisnickiDetalji_KorisnickiDetaljiId`),
   UNIQUE INDEX `TipKorisnikaId_UNIQUE` (`TipKorisnikaId` ASC),
@@ -154,6 +161,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Korisnik` (
   PRIMARY KEY (`KorisnikId`, `TipKorisnika_TipKorisnikaId`),
   UNIQUE INDEX `KorisnikId_UNIQUE` (`KorisnikId` ASC),
   INDEX `fk_Korisnik_TipKorisnika1_idx` (`TipKorisnika_TipKorisnikaId` ASC),
+  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC),
   CONSTRAINT `fk_Korisnik_TipKorisnika1`
     FOREIGN KEY (`TipKorisnika_TipKorisnikaId`)
     REFERENCES `mydb`.`TipKorisnika` (`TipKorisnikaId`)
