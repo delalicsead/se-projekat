@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="css/fontastic.css">
     <!-- Font Awesome CSS---->
@@ -31,14 +33,13 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
               <div class="navbar-header">
-				<a><img class="navbar-brand logo" src="img/img4.png" alt="logo"></a>
-                <a href="index.html" class="navbar-brand-text white upper" > Prirodno matemtički fakultet <br>Sarajevo</a>
+                <a href="index.html" class="navbar-brand-text white upper" > Kursevi </a>
                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Logout    -->
-                <li class="nav-item"><a href="login.html" class="nav-link logout white">Logout</a> 
+                <li class="nav-item"><a href="login.html" class="nav-link logout white small">Logout</a> 
 				</li>
               </ul>
             </div>
@@ -60,24 +61,25 @@
 
           <ul class="list-unstyled">
             <li class="active"> <a href="index.html"><i class="icon fa fa-home"></i>Početna</a></li>
-			<li><a href="" aria-expanded="false"> <i class="icon fa fa-book"></i>Svi Kursevi </a>
-              <ul>
+			<li><a href="#coursesSelection" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Svi Kursevi </a>
+              <ul id="coursesSelection" class="collapse list-unstyled">
                 <li><a href="#">Kursevi po odsjecima</a></li>
                 <li><a href="#">Kursevi po smjerovima</a></li>
 				<li><a href="#">Kursevi po ciklusima</a></li>
               </ul>
-            </li>
-            <li><a href="" aria-expanded="false"> <i class="icon fa fa-book"></i>Moji Kursevi </a>
-              <ul>
+			 </li>
+			<li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Moji Kursevi </a>
+              <ul id="dashvariants" class="collapse list-unstyled">
                 <li><a href="#">Računarske mreže</a></li>
-                <li><a href="#">Algoritmi i strukture podataka</a></li>
+                <li><a href="#">Računarske mreže</a></li>
               </ul>
             </li>
-            <li> <a href=""> <i class="icon fa fa-pencil-square-o"></i>Ispiti</a></li>
-			<ul>
+			<li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Ispiti </a>
+              <ul id="dashvariants" class="collapse list-unstyled">
                 <li><a href="#">Nadolazeći ispiti</a></li>
                 <li><a href="#">Rezultati ispita</a></li>
               </ul>
+            </li>
             </ul>
         </nav>
         <div class="content-inner">
@@ -88,7 +90,7 @@
             </div>
           </header>
           <!-- Dashboard Counts Section-->
-          <section class="dashboard-counts no-padding-bottom">
+          <section class="dashboard-counts no-padding-bottom beige">
             <div class="container-fluid">
               <div class="row bg-white has-shadow">
                 <!-- Item -->

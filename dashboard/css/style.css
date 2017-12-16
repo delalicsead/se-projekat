@@ -3,7 +3,7 @@ body {
   overflow-x: hidden;
 }
 header.header{
-	background-color:rgb(89,184,232);
+	background-color:rgb(191,200,21);
 	padding:7px;
 	color:white;
 }
@@ -356,14 +356,20 @@ nav.side-navbar a[data-toggle="collapse"]::before {
   top: 50%;
   right: 20px;
 }
-
+nav.side-navbar a[data-toggle="collapse"]::after {
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+/*
 nav.side-navbar a[aria-expanded="true"] {
   background: #EEF5F9;
 }
 
 nav.side-navbar a[aria-expanded="true"]::before {
   content: '\f107';
-}
+}*/
 
 nav.side-navbar a i {
   font-size: 1.2em;
@@ -417,26 +423,25 @@ nav.side-navbar ul a {
 }
 
 nav.side-navbar ul a:hover {
-  background: rgb(89,184,232);
+  background: rgb(191,200,21);
   border-left: 4px solid #3b25e6;
   color: #fff;
 }
 
 nav.side-navbar ul li.active a {
-  background: rgb(89,184,232);
+  background: rgb(191,200,21);
 }
 
 nav.side-navbar ul li.active a:hover {
-  background: rgb(89,184,232);
+  background: rgb(191,200,21);
 }
 
 nav.side-navbar ul ul {
   padding: 0;
 }
-
 nav.side-navbar ul ul a {
   padding-left: 50px;
-  background: #EEF5F9;
+  background: rgb(255,243,204);
 }
 
 nav.side-navbar.shrinked {
@@ -468,11 +473,11 @@ nav.side-navbar.shrinked a[data-toggle="collapse"]::before {
   bottom: 0;
   left: auto;
 }
-
+/*
 nav.side-navbar.shrinked a[data-toggle="collapse"][aria-expanded="true"]::before {
   content: '\f106';
 }
-
+*/
 nav.side-navbar.shrinked a:hover {
   color: #fff;
   border: none;
@@ -524,10 +529,10 @@ nav.side-navbar.shrinked .sidebar-header .title {
     right: 50%;
     bottom: 0;
     left: auto;
-  }
+  }/*
   nav.side-navbar ul a[data-toggle="collapse"][aria-expanded="true"]::before {
     content: '\f106';
-  }
+  }*/
   nav.side-navbar ul a:hover {
     color: #fff;
     border: none;
@@ -681,6 +686,9 @@ nav.navbar .nav-item > a span {
 
 nav.navbar .nav-item > a.logout i {
   margin-left: 10px;
+}
+.small{
+	font-size:11px;
 }
 .white{
 	color:white;
@@ -896,6 +904,9 @@ section.dashboard-counts .number strong {
 section.dashboard-counts .row {
   padding: 30px 15px;
   margin: 0;
+}
+.beige{
+	background-color: rgb(255,243,204);
 }
 
 section.dashboard-counts div[class*='col-'] .item {
@@ -1311,7 +1322,7 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 }
 
 footer.main-footer {
-  background: rgb(89,184,232);
+  background: rgb(191,200,21);
   color: #fff;
   padding:0;
   margin-left:-10%;
